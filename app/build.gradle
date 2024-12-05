@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.kevinschildhorn.otpview.sample'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.kevinschildhorn.otpview.sample"
         minSdk 21
-        targetSdk 34
+        targetSdk 35
         versionCode project.versionCode
         versionName project.versionName
 
@@ -29,6 +29,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 

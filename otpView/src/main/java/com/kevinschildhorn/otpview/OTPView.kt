@@ -44,6 +44,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
+import androidx.core.content.res.ResourcesCompat
 import com.kevinschildhorn.otpview.databinding.OtpViewLayoutBinding
 
 class OTPView @JvmOverloads constructor(
@@ -69,7 +70,7 @@ class OTPView @JvmOverloads constructor(
     private val marginBetween: Int
     private val isPassword: Boolean
 
-    private val otpViewLayoutBinding: OtpViewLayoutBinding
+    private val otpViewLayoutBinding: OtpViewLayoutBinding = OtpViewLayoutBinding.bind(rootView)
 
     // Default
 
@@ -101,14 +102,12 @@ class OTPView @JvmOverloads constructor(
     private var focusIndex = 0
 
     init {
-        otpViewLayoutBinding = OtpViewLayoutBinding.bind(rootView)
 
         context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.OTPView,
             0, 0
-        )
-            .apply {
+        ).apply {
                 try {
                     itemCount = getInteger(R.styleable.OTPView_otp_itemCount, 1)
                     showCursor = getBoolean(R.styleable.OTPView_otp_showCursor, false)
@@ -133,7 +132,7 @@ class OTPView @JvmOverloads constructor(
                     textColor = getInteger(R.styleable.OTPView_otp_textColor, Color.BLACK)
                     backgroundImage =
                         getDrawable(R.styleable.OTPView_otp_backgroundImage) ?: customBackground()
-                    font = getFont(R.styleable.OTPView_otp_Font)
+                    font = ResourcesCompat.getFont(context, getResourceId(R.styleable.OTPView_otp_Font, 0))
 
                     highlightedTextSize = getDimensionPixelSize(
                         R.styleable.OTPView_otp_highlightedTextSize,
@@ -146,7 +145,7 @@ class OTPView @JvmOverloads constructor(
                     highlightedBackgroundImage =
                         getDrawable(R.styleable.OTPView_otp_highlightedBackgroundImage)
                             ?: backgroundImage
-                    highlightedFont = getFont(R.styleable.OTPView_otp_highlightedFont) ?: font
+                    highlightedFont = ResourcesCompat.getFont(context, getResourceId(R.styleable.OTPView_otp_highlightedFont, 0)) ?: font
 
                     filledTextSize = getDimensionPixelSize(
                         R.styleable.OTPView_otp_filledTextSize,
@@ -156,7 +155,7 @@ class OTPView @JvmOverloads constructor(
                     filledBackgroundImage =
                         getDrawable(R.styleable.OTPView_otp_filledBackgroundImage)
                             ?: backgroundImage
-                    filledFont = getFont(R.styleable.OTPView_otp_filledFont) ?: font
+                    filledFont = ResourcesCompat.getFont(context, getResourceId(R.styleable.OTPView_otp_filledFont, 0)) ?: font
 
                     initEditTexts()
                 } finally {
