@@ -136,7 +136,10 @@ class OTPView @JvmOverloads constructor(
                 backgroundImage =
                     getDrawable(R.styleable.OTPView_otp_backgroundImage) ?: customBackground()
                 font =
-                    ResourcesCompat.getFont(context, getResourceId(R.styleable.OTPView_otp_Font, 0))
+                    ResourcesCompat.getFont(
+                        context,
+                        getResourceId(R.styleable.OTPView_otp_Font, R.font.roboto_regular)
+                    )
 
                 highlightedTextSize = getDimensionPixelSize(
                     R.styleable.OTPView_otp_highlightedTextSize,
@@ -151,8 +154,8 @@ class OTPView @JvmOverloads constructor(
                         ?: backgroundImage
                 highlightedFont = ResourcesCompat.getFont(
                     context,
-                    getResourceId(R.styleable.OTPView_otp_highlightedFont, 0)
-                ) ?: font
+                    getResourceId(R.styleable.OTPView_otp_highlightedFont, R.font.roboto_regular)
+                )
 
                 filledTextSize = getDimensionPixelSize(
                     R.styleable.OTPView_otp_filledTextSize,
@@ -164,7 +167,7 @@ class OTPView @JvmOverloads constructor(
                         ?: backgroundImage
                 filledFont = ResourcesCompat.getFont(
                     context,
-                    getResourceId(R.styleable.OTPView_otp_filledFont, 0)
+                    getResourceId(R.styleable.OTPView_otp_filledFont, R.font.roboto_regular)
                 ) ?: font
 
                 initEditTexts()
@@ -310,7 +313,8 @@ class OTPView @JvmOverloads constructor(
                 et.textCursorDrawable = it
             } ?: kotlin.run {
                 if (underscoreCursor) {
-                    et.textCursorDrawable = ResourcesCompat.getDrawable(resources, R.drawable.underscore, context.theme)
+                    et.textCursorDrawable =
+                        ResourcesCompat.getDrawable(resources, R.drawable.underscore, context.theme)
                 }
             }
         }
