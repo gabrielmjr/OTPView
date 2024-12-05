@@ -1,5 +1,6 @@
 package com.kevinschildhorn.otpview.sample
 
+import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
@@ -56,10 +57,15 @@ class MainActivity : AppCompatActivity() {
                     continueButton.isEnabled = it
                     //otp_view.isFilled()
                 }
-                val displayMetrics = DisplayMetrics()
-                windowManager.defaultDisplay.getMetrics(displayMetrics)
-                val width = displayMetrics.widthPixels
-
+                val width: Int
+                @Suppress("DEPRECATION")
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    val displayMetrics = DisplayMetrics()
+                    windowManager.defaultDisplay.getMetrics(displayMetrics)
+                    width = displayMetrics.widthPixels
+                } else {
+                    width = windowManager!!.currentWindowMetrics.bounds.width()
+                }
                 fitToWidth(width)
             }
         }
