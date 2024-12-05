@@ -126,12 +126,12 @@ class OTPView @JvmOverloads constructor(
                 allCaps = getBoolean(R.styleable.OTPView_otp_allcaps, false)
                 marginBetween = getDimensionPixelSize(
                     R.styleable.OTPView_otp_marginBetween,
-                    8.dpTopx
+                    8.dpTopX
                 )
                 isPassword = getBoolean(R.styleable.OTPView_otp_ispassword, false)
 
                 textSizeDefault =
-                    getDimensionPixelSize(R.styleable.OTPView_otp_textSize, 14.dpTopx)
+                    getDimensionPixelSize(R.styleable.OTPView_otp_textSize, 14.dpTopX)
                 textColor = getInteger(R.styleable.OTPView_otp_textColor, Color.BLACK)
                 backgroundImage =
                     getDrawable(R.styleable.OTPView_otp_backgroundImage) ?: customBackground()
@@ -330,13 +330,13 @@ class OTPView @JvmOverloads constructor(
 
         et.isAllCaps = allCaps
 
-        val leftDp = if (index == 0) 8.dpTopx else 0.dpTopx
+        val leftDp = if (index == 0) 8.dpTopX else 0.dpTopX
 
         params.setMargins(
             leftDp,
-            8.dpTopx,
+            8.dpTopX,
             marginBetween,
-            8.dpTopx
+            8.dpTopX
         )
         et.layoutParams = params
         et.gravity = Gravity.CENTER
@@ -375,39 +375,45 @@ class OTPView @JvmOverloads constructor(
     }
 
     private fun styleDefault(editText: EditText) {
-        editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSizeDefault.toFloat())
-        editText.setTextColor(textColor)
-        editText.background = backgroundImage
-        editText.typeface = font
+        editText.apply {
+            setTextSize(TypedValue.COMPLEX_UNIT_PX, textSizeDefault.toFloat())
+            setTextColor(textColor)
+            background = backgroundImage
+            typeface = font
+        }
     }
 
     private fun styleHighlighted(editText: EditText) {
-        editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, highlightedTextSize.toFloat())
-        editText.setTextColor(highlightedTextColor)
-        editText.background = highlightedBackgroundImage
-        editText.typeface = highlightedFont
+        editText.apply {
+            setTextSize(TypedValue.COMPLEX_UNIT_PX, highlightedTextSize.toFloat())
+            setTextColor(highlightedTextColor)
+            background = highlightedBackgroundImage
+            typeface = highlightedFont
+        }
     }
 
     private fun styleFilled(editText: EditText) {
-        editText.setTextSize(TypedValue.COMPLEX_UNIT_PX, filledTextSize.toFloat())
-        editText.setTextColor(filledTextColor)
-        editText.background = filledBackgroundImage
-        editText.typeface = filledFont
+        editText.apply {
+            setTextSize(TypedValue.COMPLEX_UNIT_PX, filledTextSize.toFloat())
+            setTextColor(filledTextColor)
+            background = filledBackgroundImage
+            typeface = filledFont
+        }
     }
 
     // endregion
 
     // region Utility
 
-    private val Int.dpTopx: Int
+    private val Int.dpTopX: Int
         get() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
     private fun customBackground(): Drawable {
         val shape = GradientDrawable()
         shape.shape = GradientDrawable.RECTANGLE
-        shape.cornerRadius = 8.dpTopx.toFloat()
+        shape.cornerRadius = 8.dpTopX.toFloat()
         shape.setColor(Color.WHITE)
-        shape.setStroke(2.dpTopx, Color.BLACK)
+        shape.setStroke(2.dpTopX, Color.BLACK)
         return shape
     }
 
@@ -494,7 +500,7 @@ class OTPView @JvmOverloads constructor(
     }
 
     fun fitToWidth(width: Int) {
-        val outerMargin = 8.dpTopx
+        val outerMargin = 8.dpTopX
         var dividedSpace = (width - (outerMargin * 2)) / editTexts.size
         dividedSpace -= marginBetween
         itemWidth = dividedSpace
@@ -506,13 +512,13 @@ class OTPView @JvmOverloads constructor(
         )
 
         editTexts.forEachIndexed { index, editText ->
-            val leftDp = if (index == 0) 8.dpTopx else 0.dpTopx
+            val leftDp = if (index == 0) 8.dpTopX else 0.dpTopX
 
             params.setMargins(
                 leftDp,
-                8.dpTopx,
+                8.dpTopX,
                 marginBetween,
-                8.dpTopx
+                8.dpTopX
             )
             editText.layoutParams = params
         }
