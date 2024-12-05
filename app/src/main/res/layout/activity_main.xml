@@ -8,6 +8,7 @@
 
     <LinearLayout
         android:id="@+id/button_layout_copy"
+        style="?android:attr/buttonBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -17,6 +18,7 @@
 
         <Button
             android:id="@+id/copy_button"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -28,6 +30,7 @@
 
         <Button
             android:id="@+id/paste_button"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -41,6 +44,7 @@
 
     <LinearLayout
         android:id="@+id/button_layout_fill"
+        style="?android:attr/buttonBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -50,6 +54,7 @@
 
         <Button
             android:id="@+id/fill_button"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -61,6 +66,7 @@
 
         <Button
             android:id="@+id/clear_button"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -76,10 +82,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:autofillHints=""
+        android:inputType="text"
         android:text="@string/you_can_copy"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_layout_fill" />
+        app:layout_constraintTop_toBottomOf="@id/button_layout_fill"
+        tools:ignore="LabelFor" />
 
     <com.kevinschildhorn.otpview.OTPView
         android:id="@+id/otp_view"
