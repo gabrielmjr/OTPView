@@ -25,7 +25,6 @@
 package com.kevinschildhorn.otpview
 
 import android.content.ClipData
-import android.content.ClipDescription.MIMETYPE_TEXT_PLAIN
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.res.Resources
@@ -38,17 +37,14 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
-import android.util.DisplayMetrics
 import android.util.TypedValue
-import android.view.*
+import android.view.Gravity
+import android.view.KeyEvent
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.widget.addTextChangedListener
-import com.kevinschildhorn.otpview.otpview.R
-import kotlinx.android.synthetic.main.otp_view_layout.view.*
-
+import com.kevinschildhorn.otpview.databinding.OtpViewLayoutBinding
 
 class OTPView @JvmOverloads constructor(
     context: Context,
@@ -72,6 +68,8 @@ class OTPView @JvmOverloads constructor(
     private val allCaps: Boolean
     private val marginBetween: Int
     private val isPassword: Boolean
+
+    private val otpViewLayoutBinding: OtpViewLayoutBinding
 
     // Default
 
@@ -103,7 +101,7 @@ class OTPView @JvmOverloads constructor(
     private var focusIndex = 0
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.otp_view_layout, this, true)
+        otpViewLayoutBinding = OtpViewLayoutBinding.bind(rootView)
 
         context.theme.obtainStyledAttributes(
             attrs,
@@ -337,7 +335,7 @@ class OTPView @JvmOverloads constructor(
         }
 
         editTexts.add(et)
-        otp_wrapper.addView(et)
+        otpViewLayoutBinding.otpWrapper.addView(et)
     }
 
     // endregion
