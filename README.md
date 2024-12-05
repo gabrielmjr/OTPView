@@ -50,7 +50,7 @@ implementation 'com.github.KevinSchildhorn:OTPView:0.2.5'
 | otp_textSize | dimension | The text size of items past the cursor | 14dp |
 | otp_textColor | integer | The text color of items past the cursor | Black |
 | otp_backgroundImage | reference | The background image of items past the cursor | N/A |
-| otp_Font | reference | The font of items past the cursor | N/A |
+| otp_Font | reference | The font of items past the cursor | [Roboto](https://fonts.google.com/specimen/Roboto) |
 |  |  |  |  |
 | otp_highlightedTextSize | dimension |  The text size of the highlighted item | otp_textSize |
 | otp_highlightedTextColor | integer | The text color of the highlighted item | otp_textColor |
